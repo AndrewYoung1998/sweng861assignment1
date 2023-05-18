@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 
 public class AsciiReader {
 
+	//main method that runs application
 	public static void main(String[] args) {
 		if (args.length == 0) {
 			System.out.println("Please provide the filename as an argument.");
@@ -28,7 +29,7 @@ public class AsciiReader {
 		// Print the content of the file in reverse order, converting all letters to lower case
 		printReversedContent(fileContent);
 	}
-
+	//private method that reads the file and builds a string
 	private static String readTextFile(String filename) {
 		StringBuilder content = new StringBuilder();
 		try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
@@ -41,8 +42,9 @@ public class AsciiReader {
 		}
 		return content.toString();
 	}
-
-	   private static int getMaxCharactersFromUser(int fileLength) {
+	
+	//prompts user to enter to enter number of characters to be read from the fileLength passed in to method
+	private static int getMaxCharactersFromUser(int fileLength) {
 	        int maxCharacters = 0;
 	        boolean invalidInput = true;
 
@@ -64,7 +66,8 @@ public class AsciiReader {
 
 	        return maxCharacters;
 	    }
-
+	   
+	//private method that prints out all the stats returned from other methods 
 	private static void printStatistics(String fileContent) {
 		int totalWords = countWords(fileContent);
 		int totalNumbers = countNumbers(fileContent);
@@ -82,17 +85,19 @@ public class AsciiReader {
 		System.out.println("Total Number of characters in upper case: " + totalUpperCase);
 		System.out.println("Total Number of characters in lower case: " + totalLowerCase);
 	}
-
+	
+	//gets the total word count from the string passed in based on user entered number 
 	private static int countWords(String text) {
 		String[] words = text.split("\\W+");
 		return words.length;
 	}
-
+	//gets the total number count from the string passed in based on user entered number
 	private static int countNumbers(String text) {
 		String[] numbers = text.split("\\D+");
 		return numbers.length;
 	}
-
+	
+	//gets the total number of spaces
 	private static int countSpaces(String text) {
 		int spaceCount = 0;
 		for (char c : text.toCharArray()) {
@@ -103,6 +108,7 @@ public class AsciiReader {
 		return spaceCount;
 	}
 
+	//gets the total number of puncuations 
 	private static int countPunctuation(String text) {
 		int punctuationCount = 0;
 		for (char c : text.toCharArray()) {
@@ -117,6 +123,7 @@ public class AsciiReader {
 		return punctuationCount;
 	}
 
+	//gets the total number of upper case letters
 	private static int countUpperCase(String text) {
 		int upperCaseCount = 0;
 		for (char c : text.toCharArray()) {
@@ -127,6 +134,7 @@ public class AsciiReader {
 		return upperCaseCount;
 	}
 
+	//gets the total number of lowercase letters
 	private static int countLowerCase(String text) {
 		int lowerCaseCount = 0;
 		for (char c : text.toCharArray()) {
@@ -136,7 +144,7 @@ public class AsciiReader {
 		}
 		return lowerCaseCount;
 	}
-
+	//prints string of characters in reverse
 	private static void printReversedContent(String text) {
 		StringBuilder reversedContent = new StringBuilder();
 		for (int i = text.length() - 1; i >= 0; i--) {
