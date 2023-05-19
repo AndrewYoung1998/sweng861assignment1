@@ -14,6 +14,7 @@ public class AsciiReader {
 			return;
 		}
 
+		
 		// Read the input file
 		String filename = args[0];
 		String fileContent = readTextFile(filename);
